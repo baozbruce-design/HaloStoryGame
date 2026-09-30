@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440">
+<defs><linearGradient id="bg"><stop stop-color="#37283f"/><stop offset="1" stop-color="#10121c"/></linearGradient><filter id="r"><feTurbulence baseFrequency=".02" numOctaves="2" seed="31" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2"/></filter></defs>
+<rect width="320" height="440" fill="url(#bg)"/>
+<g filter="url(#r)" stroke="#17141d" stroke-width="6">
+<path d="M73 416 Q78 286 117 227 Q145 188 183 190 Q231 192 255 246 Q278 316 278 416Z" fill="#585370"/>
+<ellipse cx="167" cy="157" rx="64" ry="75" fill="#b89b92"/>
+<path d="M97 147 Q90 91 123 64 Q168 30 217 66 Q245 87 238 145Z" fill="#383a4e"/>
+<path d="M95 135 L121 79 L167 49 L216 77 L241 137 L215 122 L200 141 L166 119 L133 140 L118 121Z" fill="#4e5670"/>
+<path d="M120 156 L214 156" stroke="#bc6c7e" stroke-width="10"/>
+<circle cx="144" cy="157" r="4" fill="#ff8796"/><circle cx="190" cy="157" r="4" fill="#ff8796"/>
+<path d="M226 270 L286 340" stroke="#9d7f58" stroke-width="10"/>
+<path d="M273 326 L296 349 L278 366 L254 342Z" fill="#c3b47c"/>
+</g>
+<text x="24" y="410" fill="#e0c8e7" font-size="20" font-family="serif" font-weight="700">TIME GUARD</text>
+<text x="24" y="430" fill="#9f91ad" font-size="11" font-family="sans-serif">WINTER CLOCK LEGION</text>
+</svg>

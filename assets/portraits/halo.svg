@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#263a57"/><stop offset="1" stop-color="#101725"/></linearGradient>
+  <filter id="rough"><feTurbulence baseFrequency=".015" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2"/></filter>
+</defs>
+<rect width="320" height="440" fill="url(#bg)"/>
+<circle cx="245" cy="70" r="90" fill="#d9b968" opacity=".13"/>
+<g filter="url(#rough)" stroke="#2d2630" stroke-width="5" stroke-linejoin="round">
+  <path d="M78 415 Q84 292 112 233 Q137 188 188 190 Q236 195 254 244 Q277 308 277 415Z" fill="#d6ae55"/>
+  <path d="M111 247 Q92 310 86 386 L119 405 L147 280Z" fill="#405a54"/>
+  <path d="M212 246 Q244 288 262 380 L225 408 L184 286Z" fill="#405a54"/>
+  <ellipse cx="169" cy="154" rx="68" ry="79" fill="#f0c59b"/>
+  <path d="M102 153 Q93 78 143 54 Q193 31 230 75 Q253 104 232 154 Q219 104 190 96 Q153 87 119 123Z" fill="#4a342e"/>
+  <path d="M113 118 Q140 102 163 109 Q184 95 216 117" fill="none"/>
+  <path d="M122 84 Q164 44 220 82" fill="none" stroke="#75513e"/>
+  <path d="M112 75 L158 42 L221 68 L235 97 L101 100Z" fill="#5f7458"/>
+  <circle cx="148" cy="157" r="5" fill="#2a2528"/><circle cx="191" cy="157" r="5" fill="#2a2528"/>
+  <path d="M151 191 Q170 201 190 188" fill="none"/>
+  <path d="M224 260 Q279 223 296 269 Q276 279 257 307" fill="none" stroke="#9a6d3d" stroke-width="9"/>
+  <path d="M266 221 Q307 256 273 318" fill="none" stroke="#d6c27e" stroke-width="5"/>
+  <path d="M92 276 Q62 301 61 342" fill="none" stroke="#f0c59b" stroke-width="18"/>
+  <path d="M62 340 L39 378" fill="none" stroke="#8e6739" stroke-width="7"/>
+</g>
+<text x="24" y="410" fill="#fff3c1" font-size="20" font-family="serif" font-weight="700">HALO</text>
+<text x="24" y="430" fill="#a7bacd" font-size="11" font-family="sans-serif">RANGER · STARBREAK</text>
+</svg>

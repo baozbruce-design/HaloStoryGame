@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1c3854"/><stop offset="1" stop-color="#101725"/></linearGradient>
+  <filter id="rough"><feTurbulence baseFrequency=".02" numOctaves="2" seed="13" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2"/></filter>
+  <radialGradient id="orb"><stop stop-color="#fff"/><stop offset=".35" stop-color="#80e9ff"/><stop offset="1" stop-color="#2776c5" stop-opacity=".1"/></radialGradient>
+</defs>
+<rect width="320" height="440" fill="url(#bg)"/>
+<circle cx="247" cy="85" r="85" fill="#70d9ff" opacity=".12"/>
+<g filter="url(#rough)" stroke="#252934" stroke-width="5" stroke-linejoin="round">
+  <path d="M74 415 Q91 290 120 229 Q143 187 183 192 Q228 196 252 245 Q276 312 272 415Z" fill="#5a86b5"/>
+  <path d="M102 256 L65 401 L120 412 L149 275Z" fill="#384f88"/>
+  <path d="M212 255 L250 405 L201 416 L177 279Z" fill="#384f88"/>
+  <ellipse cx="168" cy="158" rx="66" ry="76" fill="#efc7a4"/>
+  <path d="M102 156 Q89 104 120 77 Q147 52 190 63 Q231 75 235 130 Q218 105 195 100 Q156 89 113 123Z" fill="#33364c"/>
+  <path d="M83 93 L158 32 L237 94 L216 111 L99 111Z" fill="#456ca3"/>
+  <path d="M158 32 L195 92 L121 92Z" fill="#5d87bf"/>
+  <circle cx="147" cy="160" r="5" fill="#252832"/><circle cx="190" cy="160" r="5" fill="#252832"/>
+  <path d="M148 193 Q170 203 189 190" fill="none"/>
+  <path d="M90 282 Q52 301 44 356" fill="none" stroke="#efc7a4" stroke-width="18"/>
+  <path d="M44 356 L35 402" fill="none" stroke="#70523f" stroke-width="7"/>
+  <path d="M226 275 Q271 287 273 335" fill="none" stroke="#efc7a4" stroke-width="18"/>
+</g>
+<circle cx="267" cy="326" r="34" fill="url(#orb)"/>
+<path d="M267 300 L267 351 M241 326 L293 326" stroke="#dffaff" stroke-width="2" opacity=".75"/>
+<text x="24" y="410" fill="#d7f7ff" font-size="20" font-family="serif" font-weight="700">BOBO</text>
+<text x="24" y="430" fill="#99c4df" font-size="11" font-family="sans-serif">MAGE · WIND &amp; FLAME</text>
+</svg>

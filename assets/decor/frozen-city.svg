@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 220">
+<defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#26364f"/><stop offset=".5" stop-color="#52677e"/><stop offset="1" stop-color="#202a3d"/></linearGradient><filter id="n"><feTurbulence baseFrequency=".01" numOctaves="3" seed="8" result="t"/><feBlend in="SourceGraphic" in2="t" mode="soft-light"/></filter></defs>
+<rect width="680" height="220" fill="url(#g)"/>
+<g opacity=".7" filter="url(#n)" fill="#dae5eb">
+<path d="M0 190 L70 130 L105 165 L160 88 L212 151 L260 111 L309 164 L354 72 L409 145 L468 95 L533 166 L590 108 L680 177 L680 220 L0 220Z"/>
+</g>
+<g fill="#293241" stroke="#131925" stroke-width="5">
+<path d="M297 199 L307 64 L329 36 L351 64 L361 199Z"/>
+<circle cx="329" cy="100" r="25" fill="#c9b777"/><path d="M329 100 L318 84 M329 100 L343 108" stroke="#302c2c" stroke-width="4"/>
+</g>
+<g fill="#101521" opacity=".8"><rect x="32" y="166" width="74" height="54"/><rect x="112" y="179" width="91" height="41"/><rect x="481" y="168" width="83" height="52"/><rect x="570" y="181" width="81" height="39"/></g>
+<circle cx="90" cy="45" r="34" fill="#f0e1b0" opacity=".15"/>
+</svg>

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>夢境水晶戰記：逆行鐘塔</title>
+<link rel="stylesheet" href="style.css?v=20260930m2">
+</head>
+<body>
+<div id="app">
+  <main id="gameShell">
+    <canvas id="game"></canvas>
+
+    <header id="topHud">
+      <div class="hudBlock titleHud">
+        <div class="eyebrow">DREAM CRYSTAL TACTICS</div>
+        <strong>夢境水晶戰記：逆行鐘塔</strong>
+      </div>
+      <div id="turnOrder" class="turnOrder"></div>
+      <div class="hudBlock turnBlock">
+        <span id="phaseLabel">我方回合</span>
+        <b id="roundLabel">ROUND 1</b>
+      </div>
+    </header>
+
+    <div id="battleMessage"></div>
+    <div id="damageLayer"></div>
+
+    <div id="forecast" class="forecast hidden">
+      <div class="forecastHead">戰鬥預測</div>
+      <div class="forecastNames"><b id="forecastActor"></b><span>→</span><b id="forecastTarget"></b></div>
+      <div class="forecastStats">
+        <span>傷害 <b id="forecastDamage">--</b></span>
+        <span>命中 <b id="forecastHit">--</b></span>
+        <span>爆擊 <b id="forecastCrit">--</b></span>
+      </div>
+      <small id="forecastNote"></small>
+    </div>
+
+    <div id="startScreen" class="overlay">
+      <div class="storyCard">
+        <div class="eyebrow">DREAM CRYSTAL TACTICS · CHAPTER 31</div><div class="sigil">✦ XII : I ✦</div>
+        <h1>逆行鐘塔</h1><div class="heroCast" aria-label="哈羅、波波與泡泡"><img id="heroHalo" alt="哈羅"><img id="heroBobo" alt="波波"><img id="heroPao" alt="泡泡"></div>
+        <p>永冬城被困在午夜裂縫。鐘聲每響一次，街道、冰雪與居民便倒退一分鐘。</p>
+        <p>哈羅、波波與泡泡必須利用高低差、職業與技能，在時間守衛合圍前突破冰封廣場。</p>
+        <div class="startActions">
+          <button id="startBtn" class="primary">開始新戰鬥</button>
+          <button id="continueBtn" class="secondary hidden">讀取存檔</button>
+        </div>
+        <small id="controlHint">滑鼠選格 ・ WASD / 方向鍵移動鏡頭 ・ 右鍵拖曳 ・ 小地圖快速移動</small>
+      </div>
+    </div>
+
+    <div id="resultScreen" class="overlay hidden">
+      <div class="storyCard">
+        <div class="sigil">✦ XII ✦</div>
+        <h1 id="resultTitle">鐘聲重新向前</h1>
+        <p id="resultText"></p>
+        <div id="resultExp" class="resultExp"></div>
+        <button onclick="location.reload()" class="primary">返回標題</button>
+      </div>
+    </div>
+
+    <div id="battleDialogue" class="battleDialogue hidden" role="dialog" aria-modal="true" aria-labelledby="dialogueSpeaker">
+      <div class="dialogueStage">
+        <div class="dialogueSceneTag" id="dialogueSceneTitle">BATTLE EVENT</div>
+        <button id="dialogueSkip" class="dialogueSkip" type="button">跳過劇情 Esc</button>
+        <img id="dialogueLeft" class="dialoguePortrait dialoguePortraitLeft hidden" alt="">
+        <img id="dialogueRight" class="dialoguePortrait dialoguePortraitRight hidden" alt="">
+        <div id="dialogueBox" class="dialogueBox">
+          <div class="dialogueNameRow">
+            <strong id="dialogueSpeaker"></strong>
+            <span id="dialogueProgress"></span>
+          </div>
+          <div id="dialogueText" class="dialogueText"></div>
+          <div class="dialogueControls">
+            <span>點擊對話框／Enter／Space：繼續</span>
+            <button id="dialogueNext" type="button">繼續 ▶</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="statsModal" class="modal hidden">
+      <div class="modalCard statsModalCard">
+        <button class="modalClose" id="closeStats">×</button>
+        <div class="statsPortraitPane">
+          <img id="statsPortrait" class="statsPortrait" alt="">
+          <div class="statsPortraitCaption">CHARACTER STATUS</div>
+        </div>
+        <div class="statsBody">
+          <div class="eyebrow" id="statsJob"></div>
+          <h2 id="statsName"></h2>
+          <div class="levelLine"><span id="statsLevel"></span><div class="xpMeter"><i id="statsXpBar"></i></div><span id="statsXp"></span></div>
+          <div id="statsStatuses" class="statsStatuses"></div>
+          <div id="statsGrid" class="statsGrid"></div>
+          <h4>習得技能</h4>
+          <div id="statsSkills" class="statsSkills"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="commandModal" class="modal commandModal hidden">
+      <div class="commandModalCard">
+        <button class="modalClose" id="closeCommandModal">×</button>
+        <aside class="commandActor">
+          <img id="commandPortrait" alt="角色立繪">
+          <div class="commandActorInfo">
+            <div id="commandJob" class="eyebrow"></div>
+            <h2 id="commandName"></h2>
+            <div class="commandLevelRow"><b id="commandLevel"></b><span id="commandExp"></span></div>
+            <div class="commandVital"><span>HP</span><div class="bigMeter"><i id="commandHpBar"></i></div><b id="commandHpText"></b></div>
+            <div class="commandVital"><span>MP</span><div class="bigMeter mp"><i id="commandMpBar"></i></div><b id="commandMpText"></b></div>
+            <div id="commandStatuses" class="commandStatuses"></div>
+          </div>
+        </aside>
+        <section class="commandSelectPane">
+          <div class="commandModalHead">
+            <span id="commandModalKicker">COMMAND</span>
+            <h2 id="commandModalTitle">技能選擇</h2>
+            <p id="commandModalHint">選擇要使用的技能</p>
+          </div>
+          <div id="commandList" class="commandList"></div>
+          <div class="commandModalFooter">數字 1–9：快速選擇　｜　Esc／右上角 ×：返回戰場</div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <aside id="side">
+    <section class="chapter">
+      <div class="eyebrow">CHAPTER 31</div>
+      <h2>十二點零一分</h2>
+      <p>勝利：擊敗全部時間守衛。<br>敗北：三兄妹全員失去戰鬥能力。</p>
+    </section>
+
+    <section id="unitPanel" class="unitPanel">
+      <button id="portraitBtn" class="portraitBtn" title="查看角色詳細能力">
+        <img id="portraitImg" src="assets/user-character-art/portraits/halo_portrait.webp" alt="角色立繪">
+      </button>
+      <div class="unitMeta">
+        <span id="unitJob">遊俠</span>
+        <h3 id="unitName">哈羅 Halo</h3>
+        <div class="levelMini"><b id="levelText">Lv. 1</b><span id="xpText">EXP 0/100</span></div>
+        <div class="statline"><span>HP</span><div class="meter"><i id="hpBar"></i></div><b id="hpText">100/100</b></div>
+        <div class="statline"><span>MP</span><div class="meter blue"><i id="mpBar"></i></div><b id="mpText">20/20</b></div>
+        <div id="statusChips" class="statusChips"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionTitle">行動指令</div>
+      <div class="actions">
+        <button id="moveBtn">移動</button>
+        <button id="attackBtn">攻擊</button>
+        <button id="skillBtn">技能</button>
+        <button id="itemBtn">道具</button>
+        <button id="undoBtn" class="undo">撤回移動</button>
+        <button id="waitBtn">待機／面向</button>
+      </div>
+      <button id="endRoundBtn" class="wide danger">結束我方回合</button>
+    </section>
+
+    <section id="actionHelpSection">
+      <div class="sectionTitle">目前指令</div>
+      <div id="actionHelp" class="infoBox">選擇角色後，藍色格為可移動範圍；紅色格為移動後可能攻擊到的範圍。</div>
+      <div class="rangeLegend">
+        <span><i class="moveSwatch"></i>移動</span>
+        <span><i class="attackSwatch"></i>攻擊射程</span>
+        <span><i class="threatSwatch"></i>敵軍威脅</span>
+      </div>
+      <button id="threatBtn" class="wide threatToggle">敵軍威脅範圍 ON</button>
+    </section>
+
+    <section>
+      <div class="sectionTitle">地形／單位資訊</div>
+      <div id="tileInfo" class="infoBox">高地會增加遠距離射程與攻擊傷害。側擊、背擊會提升命中與爆擊。</div>
+    </section>
+
+    <section>
+      <div class="sectionTitle rowTitle"><span>戰場小地圖</span><span class="miniHint">點擊快速移動</span></div>
+      <canvas id="miniMap" width="280" height="180"></canvas>
+    </section>
+
+    <section class="utilityGrid">
+      <button id="saveBtn">儲存戰鬥</button>
+      <button id="musicBtn">♫ 音樂 ON</button>
+      <button id="soundBtn">✦ 音效 ON</button>
+    </section>
+
+    <section class="audioSettings" aria-label="音量設定"><label for="musicVolume">配樂 <output id="musicVolumeValue">60%</output></label><input id="musicVolume" type="range" min="0" max="100" value="60"><label for="sfxVolume">音效 <output id="sfxVolumeValue">75%</output></label><input id="sfxVolume" type="range" min="0" max="100" value="75"><small>冰晶琴・弦樂・低音鼓｜隨敵我回合變奏</small></section><section class="battleLogWrap">
+      <div class="sectionTitle">戰鬥紀錄</div>
+      <div id="battleLog" class="battleLog"></div>
+    </section>
+  </aside>
+</div>
+<script src="audio.js"></script><script src="art.js"></script><script src="dialogue.js?v=20260930m2"></script><script src="game.js?v=20260930m2"></script><script src="mobile.js?v=20260930m2"></script>
+</body>
+</html>
